@@ -148,27 +148,27 @@ __declspec(naked) void loadCutShortcut() {
 
 	}
 }
-__declspec(naked) void XGDPS_creditsSkipIcons() {
+__declspec(naked) void TicGDPSv4_creditsSkipIcons() {
 
 	__asm {
 
-		jmp[XGDPS_creditsSkipIconsJump]
+		jmp[TicGDPSv4_creditsSkipIconsJump]
 
 	}
 }
-__declspec(naked) void XGDPS_creditsShowButton() {
+__declspec(naked) void TicGDPSv4_creditsShowButton() {
 
 	__asm {
 
 		call dword ptr[edx + 0x000000E0]
-		push XGDPS_creditsSpriteName
+		push TicGDPSv4_creditsSpriteName
 		call dword ptr[createWithSprite]
 		mov esi, eax
 		mov dword ptr ss : [esp], 0x3F800000
 		mov ecx, esi
 		mov edx, [esi]
 		call dword ptr[edx + 0x50]
-		push XGDPS_creditsFunction
+		push TicGDPSv4_creditsFunction
 		push ebx
 		mov ecx, esi
 		call createMenu
@@ -178,36 +178,36 @@ __declspec(naked) void XGDPS_creditsShowButton() {
 		mov edx, [esi]
 		push eax
 		call dword ptr[edx + 0x000000E0]
-		jmp[retXGDPS_creditsShowButton]
+		jmp[retTicGDPSv4_creditsShowButton]
 
 	}
 }
-__declspec(naked) void XGDPS_creditsPosition() {
+__declspec(naked) void TicGDPSv4_creditsPosition() {
 
 	__asm {
 
 		push ebx
 		push ecx
-		mov ebx, [XGDPS_creditsPosition_multiplier]
+		mov ebx, [TicGDPSv4_creditsPosition_multiplier]
 		cvtsi2ss xmm1, ebx
 		mulss xmm0, xmm1
-		mov ebx, [XGDPS_creditsPosition_adjusterX]
+		mov ebx, [TicGDPSv4_creditsPosition_adjusterX]
 		cvtsi2ss xmm1, ebx
 		subss xmm0, xmm1
-		mov ebx, [XGDPS_creditsPosition_splitAmount]
+		mov ebx, [TicGDPSv4_creditsPosition_splitAmount]
 		dec ebx
 		cmp eax, ebx
 		jl jumpPoint1
-		mov ecx, [XGDPS_creditsPosition_adjusterX2]
+		mov ecx, [TicGDPSv4_creditsPosition_adjusterX2]
 		cvtsi2ss xmm1, ecx
 		movss[esp + 0x0C], xmm1
 		inc ebx
 		cvtsi2ss xmm1, ebx
-		mov ecx, [XGDPS_creditsPosition_multiplier]
+		mov ecx, [TicGDPSv4_creditsPosition_multiplier]
 		cvtsi2ss xmm2, ecx
 		mulss xmm1, xmm2
 		subss xmm0, xmm1
-		mov ecx, [XGDPS_creditsPosition_multiplier]
+		mov ecx, [TicGDPSv4_creditsPosition_multiplier]
 		cvtsi2ss xmm2, ecx
 		divss xmm1, xmm1
 		addss xmm1, xmm1
@@ -215,17 +215,17 @@ __declspec(naked) void XGDPS_creditsPosition() {
 		addss xmm0, xmm2
 		jumpPoint1 :
 		movss xmm1, [esp + 0x0C]
-		mov ecx, [XGDPS_creditsPosition_adjusterY]
+		mov ecx, [TicGDPSv4_creditsPosition_adjusterY]
 		cvtsi2ss xmm2, ecx
 		subss xmm1, xmm2
 		movss[esp + 0x0C], xmm1
 		pop ecx
 		pop ebx
-		jmp [retXGDPS_creditsPosition]
+		jmp [retTicGDPSv4_creditsPosition]
 
 	}
 }
-__declspec(naked) void XGDPS_creditsMain() {
+__declspec(naked) void TicGDPSv4_creditsMain() {
 
 	__asm {
 
@@ -251,73 +251,73 @@ __declspec(naked) void XGDPS_creditsMain() {
 		je credit_10_function
 		cmp eax, 0xA
 		je credit_11_function
-		jmp[XGDPS_creditsMain_returnNotFound]
+		jmp[TicGDPSv4_creditsMain_returnNotFound]
 
 
 		credit_1_function:
-		push[XGDPS_creditsMain_credit_1_length]
-			push XGDPS_creditsMain_credit_1_string
-			jmp[XGDPS_creditsMain_returnFound]
+		push[TicGDPSv4_creditsMain_credit_1_length]
+			push TicGDPSv4_creditsMain_credit_1_string
+			jmp[TicGDPSv4_creditsMain_returnFound]
 
 			credit_2_function :
-		push[XGDPS_creditsMain_credit_2_length]
-			push XGDPS_creditsMain_credit_2_string
-			jmp[XGDPS_creditsMain_returnFound]
+		push[TicGDPSv4_creditsMain_credit_2_length]
+			push TicGDPSv4_creditsMain_credit_2_string
+			jmp[TicGDPSv4_creditsMain_returnFound]
 
 			credit_3_function :
-		push[XGDPS_creditsMain_credit_3_length]
-			push XGDPS_creditsMain_credit_3_string
-			jmp[XGDPS_creditsMain_returnFound]
+		push[TicGDPSv4_creditsMain_credit_3_length]
+			push TicGDPSv4_creditsMain_credit_3_string
+			jmp[TicGDPSv4_creditsMain_returnFound]
 
 			credit_4_function :
-		push[XGDPS_creditsMain_credit_4_length]
-			push XGDPS_creditsMain_credit_4_string
-			jmp[XGDPS_creditsMain_returnFound]
+		push[TicGDPSv4_creditsMain_credit_4_length]
+			push TicGDPSv4_creditsMain_credit_4_string
+			jmp[TicGDPSv4_creditsMain_returnFound]
 
 			credit_5_function :
-		push[XGDPS_creditsMain_credit_5_length]
-			push XGDPS_creditsMain_credit_5_string
-			jmp[XGDPS_creditsMain_returnFound]
+		push[TicGDPSv4_creditsMain_credit_5_length]
+			push TicGDPSv4_creditsMain_credit_5_string
+			jmp[TicGDPSv4_creditsMain_returnFound]
 
 			credit_6_function :
-		push[XGDPS_creditsMain_credit_6_length]
-			push XGDPS_creditsMain_credit_6_string
-			jmp[XGDPS_creditsMain_returnFound]
+		push[TicGDPSv4_creditsMain_credit_6_length]
+			push TicGDPSv4_creditsMain_credit_6_string
+			jmp[TicGDPSv4_creditsMain_returnFound]
 
 			credit_7_function :
-		push[XGDPS_creditsMain_credit_7_length]
-			push XGDPS_creditsMain_credit_7_string
-			jmp[XGDPS_creditsMain_returnFound]
+		push[TicGDPSv4_creditsMain_credit_7_length]
+			push TicGDPSv4_creditsMain_credit_7_string
+			jmp[TicGDPSv4_creditsMain_returnFound]
 
 			credit_8_function :
-		push[XGDPS_creditsMain_credit_8_length]
-			push XGDPS_creditsMain_credit_8_string
-			jmp[XGDPS_creditsMain_returnFound]
+		push[TicGDPSv4_creditsMain_credit_8_length]
+			push TicGDPSv4_creditsMain_credit_8_string
+			jmp[TicGDPSv4_creditsMain_returnFound]
 
 			credit_9_function :
-		push[XGDPS_creditsMain_credit_9_length]
-			push XGDPS_creditsMain_credit_9_string
-			jmp[XGDPS_creditsMain_returnFound]
+		push[TicGDPSv4_creditsMain_credit_9_length]
+			push TicGDPSv4_creditsMain_credit_9_string
+			jmp[TicGDPSv4_creditsMain_returnFound]
 
 			credit_10_function :
-		push[XGDPS_creditsMain_credit_10_length]
-			push XGDPS_creditsMain_credit_10_string
-			jmp[XGDPS_creditsMain_returnFound]
+		push[TicGDPSv4_creditsMain_credit_10_length]
+			push TicGDPSv4_creditsMain_credit_10_string
+			jmp[TicGDPSv4_creditsMain_returnFound]
 
 			credit_11_function :
-		push[XGDPS_creditsMain_credit_11_length]
-			push XGDPS_creditsMain_credit_11_string
-			jmp[XGDPS_creditsMain_returnFound]
+		push[TicGDPSv4_creditsMain_credit_11_length]
+			push TicGDPSv4_creditsMain_credit_11_string
+			jmp[TicGDPSv4_creditsMain_returnFound]
 
 	}
 }
-__declspec(naked) void XGDPS_creditsMenuIcon() {
+__declspec(naked) void TicGDPSv4_creditsMenuIcon() {
 
 	__asm {
 
 		push eax
-		push XGDPS_creditsMenuIcon_string
-		jmp[retXGDPS_creditsMenuIcon]
+		push TicGDPSv4_creditsMenuIcon_string
+		jmp[retTicGDPSv4_creditsMenuIcon]
 
 	}
 }
@@ -363,11 +363,11 @@ void mainMod() {
 	placeJMP((BYTE*)base + 0x5FA21, (DWORD)loadModBadges2, 0x5);
 
 	writeByte((BYTE*)base + 0x49762, 11);
-	placeJMP((BYTE*)base + 0x4917D, (DWORD)XGDPS_creditsSkipIcons, 0x5);
-	placeJMP((BYTE*)base + 0x190C3C, (DWORD)XGDPS_creditsShowButton, 0x5);
-	placeJMP((BYTE*)base + 0x4964F, (DWORD)XGDPS_creditsPosition, 0x5);
-	placeJMP((BYTE*)base + 0x495AE, (DWORD)XGDPS_creditsMain, 0x5);
-	placeJMP((BYTE*)base + 0x495FC, (DWORD)XGDPS_creditsMenuIcon, 0x5);
+	placeJMP((BYTE*)base + 0x4917D, (DWORD)TicGDPSv4_creditsSkipIcons, 0x5);
+	placeJMP((BYTE*)base + 0x190C3C, (DWORD)TicGDPSv4_creditsShowButton, 0x5);
+	placeJMP((BYTE*)base + 0x4964F, (DWORD)TicGDPSv4_creditsPosition, 0x5);
+	placeJMP((BYTE*)base + 0x495AE, (DWORD)TicGDPSv4_creditsMain, 0x5);
+	placeJMP((BYTE*)base + 0x495FC, (DWORD)TicGDPSv4_creditsMenuIcon, 0x5);
 
 }
 
